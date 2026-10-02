@@ -10,7 +10,8 @@ Reproducibility_Exercise/
 ├── requirements.txt                  # required packages and versions
 ├── README.md                         # this file 
 |── Example_Dataset_Diabetes.csv      # example dataset
-|── starter_diabetes_risk_factor_analysis.ipynb #google collab notebook
+|── Reproducibility_Summary.txt       # change log 
+
 
 Required Software and Libraries
 Python 3.11 or newer 
