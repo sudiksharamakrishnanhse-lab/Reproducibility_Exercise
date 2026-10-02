@@ -1,0 +1,41 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Reproducibility Summary\
+\
+**Project:** Diabetes Risk Factor Analysis\
+**Author:** Sudiksha Ramakrishnan  **Date:** 9/30/2026\
+**Repository:** https://github.com/sudiksharamakrishnanhse-lab/Reproducibility_Exercise \
+\
+Overview\
+This summary describes the changes made to the starter notebook so that a data science team at another clinical site can obtain the project, run it in their own environment, and reproduce the same results. \
+\
+Problems Identified and Changes Made\
+\
+1. Required packages and versions were not documented. Added `requirements.txt` with pinned versions, documented the Python version, and wrote setup instructions in the notebook and README. \
+\
+2. Validation only printed the shape, missing values, and data types. It did not confirm the right file was loaded.  Added `assert` checks for the shape (768 \'d7 9), column names, and `Outcome` values (0/1), with documentation of what to do if a check fails. \
+\
+3. Missing data were hidden: `isna()` found none, but zeros in Glucose, D_BP, Skin_Thickness, Insulin, and BMI cannot be real values. Counted the zeros, converted them to missing values (`NaN`), and documented the decision. Added `.dropna()` to the t-test, because missing values make it return `nan`. \
+\
+4. Results changed between runs: `df.sample()` and the bootstrap were unseeded. Set `SEED = 42` and used it for the sample (`random_state`) and the bootstrap (`np.random.default_rng`). Repeated runs now give identical output. \
+\
+5. Mathematical notation did not render in the mean and standard deviation section. Wrapped the equations in `$...$` / `$$...$$`\
+\
+6. The machine learning formulation used generic placeholders (`var1`\'96`var8`, `target`). Replaced them with the actual column names.\
+\
+7. Sections were not documented and the execution order was unclear. Organized the notebook as Setup \uc0\u8594  Data Source \u8594  Validation \u8594  Preparation \u8594  Analysis \u8594  Results, with Markdown explaining each section, and ensured each cell depends only on cells above it. \
+\
+8.Review comments were embedded in the notebook. Added the requested bivariate plots, correlation heatmap, and second inferential test, then removed all internal review notes. \
+\
+Verification\
+- Ran **Restart and Run All** with no errors.\
+- Confirmed the key results: t \uc0\u8776  \u8722 15.70 (p \u8776  2.5 \'d7 10\u8315 \u8308 \u8312 ), Mann-Whitney U = 27,393.5, and Glucose\'96Outcome Spearman \u961  \u8776  0.48.\
+\
+Assumptions and Limitations\
+- Missing values are not imputed, so sample sizes differ by variable. Insulin  and Skin_Thickness are affected most.\
+- Package versions are pinned to those used for this analysis, and results may differ with other versions.}
